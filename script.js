@@ -327,5 +327,27 @@ document.querySelectorAll('.project-card, .camera-card').forEach(card => {
     });
 });
 
+// Menu mobile
+const menuBtn = document.querySelector('.menu-btn');
+const navLinks = document.querySelector('.nav-links');
+
+menuBtn.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+});
+
+// Fechar menu ao clicar em um link
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+    });
+});
+
+// Fechar menu ao clicar fora
+document.addEventListener('click', (e) => {
+    if (!navLinks.contains(e.target) && !menuBtn.contains(e.target)) {
+        navLinks.classList.remove('active');
+    }
+});
+
 // Inicializar quando o DOM estiver carregado
 document.addEventListener('DOMContentLoaded', init); 
